@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Unicrom</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="login">login</string>
+    <string name="textview">TextView</string>
+
+    <string name="todo">TODO</string>
+    <string name="code_name">Code Name</string>
+</resources>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "160836269892",
+    "firebase_url": "https://unicrom-f4a54-default-rtdb.firebaseio.com",
+    "project_id": "unicrom-f4a54",
+    "storage_bucket": "unicrom-f4a54.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:160836269892:android:09678156845cd6cb060911",
+        "android_client_info": {
+          "package_name": "com.example.unicrom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "160836269892-30ecpeattd85ic68i6kemdesiv9rqn49.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAblanseZzigLr0NQolf4V2AUMtH7XwBiA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "160836269892-30ecpeattd85ic68i6kemdesiv9rqn49.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

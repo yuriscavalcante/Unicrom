@@ -14,35 +14,35 @@
         android:orientation="vertical" >
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/academico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
             android:text="Academico"
-            android:textSize = "24sp"
-            android:padding="16dp" />
+            android:textSize="24sp" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/expandable_layout">
 
             <TextView
-                android:id="@+id/version"
-                android:layout_width="wrap_content"
+                android:id="@+id/boletim"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
-                android:text="Version"
+                android:text="Boletim"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/api_level"
-                android:text="Api Level"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/boletim"
                 android:padding="16dp"
+                android:text="Api Level"
                 android:textSize="18sp"
-                android:layout_below="@id/version"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
 
         </RelativeLayout>

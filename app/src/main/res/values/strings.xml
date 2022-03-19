@@ -7,4 +7,14 @@
 
     <string name="todo">TODO</string>
     <string name="code_name">Code Name</string>
+    <string name="quero_ser_aluno">Quero Ser Aluno</string>
+    <string name="j_sou_aluno">Já Sou Aluno</string>
+
+    <string name="boletim">BOLETIM</string>
+    <string name="material">MATERIAL</string>
+    <string name="calendario">CALENDARIO</string>
+    <string name="academico">ACADEMICO</string>
+    <string name="administrativo">ADMINISTRATIVO</string>
+    <string name="boletos">BOLETOS</string>
+    <string name="solicita_es">SOLICITAÇÕES</string>
 </resources>

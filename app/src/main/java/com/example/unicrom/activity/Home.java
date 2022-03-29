@@ -55,7 +55,7 @@ public class Home extends AppCompatActivity {
 
         FirebaseRecyclerOptions<modelCurso> options =
                 new FirebaseRecyclerOptions.Builder<modelCurso>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("cursos"), modelCurso.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("alunos/"+userId+"/cursos"), modelCurso.class)
                         .build();
 
         ha = new HomeAdapter(options);

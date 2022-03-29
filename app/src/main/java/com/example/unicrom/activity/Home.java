@@ -3,6 +3,7 @@ package com.example.unicrom.activity;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.Bitmap;
@@ -14,9 +15,13 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.unicrom.R;
+import com.example.unicrom.adapter.HomeAdapter;
+import com.example.unicrom.model.modelCurso;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -35,6 +40,8 @@ public class Home extends AppCompatActivity {
     private TextView userName, userMat;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     String userId;
+    RecyclerView rcView;
+    HomeAdapter ha;
     private StorageReference mStorageReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +49,17 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         inicialize();
-        mStorageReference = FirebaseStorage.getInstance().getReference().child("foto/avatar.png");
+        mStorageReference = FirebaseStorage.getInstance().getReference().child("foto/"+userId+"/avatar.png");
+        rcView = (RecyclerView)findViewById(R.id.listaCurso);
+        rcView.setLayoutManager(new LinearLayoutManager(this));
+
+        FirebaseRecyclerOptions<modelCurso> options =
+                new FirebaseRecyclerOptions.Builder<modelCurso>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("cursos"), modelCurso.class)
+                        .build();
+
+        ha = new HomeAdapter(options);
+        rcView.setAdapter(ha);
 
         try {
             final File localFile = File.createTempFile("avatar", "png");
@@ -80,11 +97,21 @@ public class Home extends AppCompatActivity {
 
             }
         });
+
+        ha.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        ha.stopListening();
     }
 
     private void inicialize(){
-        userName = findViewById(R.id.nomeUser);
+       userName = findViewById(R.id.nomeUser);
        userMat = findViewById(R.id.matUser);
+
+
 
 }
 

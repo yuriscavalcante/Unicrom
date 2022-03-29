@@ -5,57 +5,148 @@
     android:id="@+id/orientation"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.Login" >
+    tools:context=".activity.Login"
+    android:background="#6360FF">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/new_background"
-        android:orientation="vertical"
-        android:paddingLeft="32dp"
-        android:paddingTop="50dp"
-        android:paddingRight="32dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="16dp">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:src="@tools:sample/avatars"
-            android:contentDescription="TODO" />
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="342dp"
+        android:layout_height="194dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="196dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="136dp"
+        android:text="UNICROM"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="#FFFFFF"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="205dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="136dp"
+        android:text="REVOLUÇÃO PROFISSIONAL"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textColorHint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="409dp"
+        android:layout_height="345dp"
+        android:background="@drawable/bordas"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="1.0">
 
         <EditText
             android:id="@+id/editTextEmailLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/text_background"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="260dp"
+            android:background="@drawable/bordainput"
             android:ems="10"
-            android:hint="@string/email"
             android:inputType="textEmailAddress"
-            android:minHeight="48dp"
-            android:textColor="@color/white"
-            android:textColorHint="#FFFFFF"
-            android:autofillHints="" />
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <EditText
             android:id="@+id/editTextPasswordLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/text_background"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/bordainput"
             android:ems="10"
-            android:hint="@string/password"
             android:inputType="textPassword"
-            android:minHeight="48dp"
-            android:textColor="@color/white"
-            android:textColorHint="#FFFFFF"
-            android:autofillHints="" />
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextEmailLogin"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <Button
             android:id="@+id/loginButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/login"
-            android:onClick="authentication"/>
-    </LinearLayout>
+            android:layout_marginTop="44dp"
+            android:background="@drawable/bordabotao"
+            android:onClick="authentication"
+            android:text="Login"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPasswordLogin"
+            android:textColor="#FFFFFF"/>
+
+        <TextView
+            android:id="@+id/sub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:text="VENHA FAZER PARTE DA REVOLUÇÃO PROFISSIONAL!"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loginButton"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="E-mail"
+            app:layout_constraintBottom_toTopOf="@+id/editTextEmailLogin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.085"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.055" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Senha"
+            app:layout_constraintBottom_toTopOf="@+id/editTextPasswordLogin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.088"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextEmailLogin"
+            app:layout_constraintVertical_bias="0.52" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

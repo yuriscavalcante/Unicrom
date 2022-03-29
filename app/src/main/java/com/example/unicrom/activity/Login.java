@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,6 +26,7 @@ public class Login extends AppCompatActivity {
 
     EditText email, password;
     Button loginButton;
+    TextView sub;
     private FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         auth = conection.authentication();
         inicializeComponent();
+        sub.setText("VENHA FAZER PARTE DA REVOLUÇÃO"+"\nPROFISSIONAL!");
     }
 
     public void authentication(View view){
@@ -90,17 +93,19 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        /*
         FirebaseUser authUser = auth.getCurrentUser();
         if(authUser!=null){
-            //openHome();
+            openHome();
             System.out.println("Tudo Ok");
-        }
+        }*/
     }
 
     private void inicializeComponent(){
         email = findViewById(R.id.editTextEmailLogin);
         password = findViewById(R.id.editTextPasswordLogin);
         loginButton = findViewById(R.id.loginButton);
+        sub = findViewById(R.id.sub);
 
     }
 }

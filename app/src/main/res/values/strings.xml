@@ -8,7 +8,7 @@
     <string name="todo">TODO</string>
     <string name="code_name">Code Name</string>
     <string name="quero_ser_aluno">Quero Ser Aluno</string>
-    <string name="j_sou_aluno">Já Sou Aluno</string>
+
 
     <string name="boletim">BOLETIM</string>
     <string name="material">MATERIAL</string>
@@ -18,4 +18,5 @@
     <string name="boletos">BOLETOS</string>
     <string name="solicita_es">SOLICITAÇÕES</string>
     <string name="unicrom">UNICROM</string>
+    <string name="j_sou_aluno">Já Sou Aluno</string>
 </resources>

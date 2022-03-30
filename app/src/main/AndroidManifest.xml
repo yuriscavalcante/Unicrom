@@ -13,6 +13,8 @@
         <activity
             android:name=".activity.Search"
             android:exported="false" />
+
+
         <activity
             android:name=".activity.Home"
             android:exported="false" />

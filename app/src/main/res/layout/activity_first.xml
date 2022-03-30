@@ -3,39 +3,51 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/new_background"
     android:layout_height="match_parent"
-    tools:context=".activity.First">
+    tools:context=".activity.First"
+    >
 
-    <Button
-        android:id="@+id/buttonSouAluno"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="460dp"
-        android:text="@string/j_sou_aluno"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="openLogin"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/new_background"
+        android:orientation="vertical"
+        android:paddingLeft="32dp"
+        android:paddingTop="50dp"
+        android:paddingRight="32dp"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="126dp">
 
-    <Button
-        android:id="@+id/buttonQueroSer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/quero_ser_aluno"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSouAluno" />
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:srcCompat="@tools:sample/avatars" />
 
-    <ImageView
-        android:id="@+id/logoView"
-        android:layout_width="319dp"
-        android:layout_height="402dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="48dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
+        <Button
+            android:id="@+id/souAluno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/j_sou_aluno"
+            android:onClick="openLogin"/>
 
+        <Button
+            android:id="@+id/queroAluno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Quero Ser Aluno" />
+
+        <Button
+            android:id="@+id/professor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sou Professor"
+            />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Button" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

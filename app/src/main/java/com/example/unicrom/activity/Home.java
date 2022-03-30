@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,9 +49,10 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        inicialize();
-        mStorageReference = FirebaseStorage.getInstance().getReference().child("foto/"+userId+"/avatar.png");
+        userId = FirebaseAuth.getInstance().getCurrentUser().getUid();//pegar id de usuario
+        inicialize();//inicializar os componentes da tela
+        mStorageReference = FirebaseStorage.getInstance().getReference().child("foto/"+userId+"/avatar.png");//imagem do avatar
+        //listar os cursos
         rcView = (RecyclerView)findViewById(R.id.listaCurso);
         rcView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -61,6 +64,7 @@ public class Home extends AppCompatActivity {
         ha = new HomeAdapter(options);
         rcView.setAdapter(ha);
 
+        //Função para puxar e dar "set" na imagem
         try {
             final File localFile = File.createTempFile("avatar", "png");
             mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
@@ -84,6 +88,7 @@ public class Home extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        //"Setar" informções do aluno
         DocumentReference documentReference = db.collection("aluno").document(userId);
         documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
 
@@ -97,22 +102,25 @@ public class Home extends AppCompatActivity {
 
             }
         });
-
+        //Começo da leitura da lista
         ha.startListening();
+    }
+
+    public void openSearch(View view) {
+        Intent i = new Intent(Home.this, Search.class);
+        startActivity(i);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
+        //Final da leitura da lista
         ha.stopListening();
     }
 
     private void inicialize(){
        userName = findViewById(R.id.nomeUser);
        userMat = findViewById(R.id.matUser);
-
-
-
-}
+    }
 
 }

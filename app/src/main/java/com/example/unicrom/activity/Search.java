@@ -93,6 +93,11 @@ public class Search extends AppCompatActivity {
         });
     }
 
+    public void openUser(View view) {
+        Intent i = new Intent(Search.this, User.class);
+        startActivity(i);
+    }
+
     private void searchTxt(String str){
         String teste;
         teste = str.toUpperCase(Locale.ROOT);

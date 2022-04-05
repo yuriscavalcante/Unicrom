@@ -38,47 +38,32 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Home extends AppCompatActivity {
-    private TextView userName, userMat;
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    String userId;
-    RecyclerView rcView;
-    HomeAdapter ha;
+public class User extends AppCompatActivity {
+    private TextView userName, userEmail;
     private StorageReference mStorageReference;
-
+    String userId;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_user);
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();//pegar id de usuario
-        inicialize();//inicializar os componentes da tela
-        mStorageReference = FirebaseStorage.getInstance().getReference().child("foto/"+userId+"/avatar.png");//imagem do avatar
-        //listar os cursos
-        rcView = (RecyclerView)findViewById(R.id.listaCurso);
-        rcView.setLayoutManager(new LinearLayoutManager(this));
 
-        FirebaseRecyclerOptions<modelCurso> options =
-                new FirebaseRecyclerOptions.Builder<modelCurso>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("alunos/"+userId+"/cursos"), modelCurso.class)
-                        .build();
-
-        ha = new HomeAdapter(options);
-        rcView.setAdapter(ha);
-
-        //Função para puxar e dar "set" na imagem
+        inicialize();
+        mStorageReference = FirebaseStorage.getInstance().getReference().child("foto/"+userId+"/avatar.png");
         try {
             final File localFile = File.createTempFile("avatar", "png");
             mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(Home.this, "Tudo Ok!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(User.this, "Tudo Ok!", Toast.LENGTH_SHORT).show();
                     Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
                     ((ImageView)findViewById(R.id.avatarcircle)).setImageBitmap(bitmap);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(Home.this, "Erro!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(User.this, "Erro!", Toast.LENGTH_SHORT).show();
                 }
             });
         } catch (IOException e) {
@@ -89,7 +74,6 @@ public class Home extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        //"Setar" informções do aluno
         DocumentReference documentReference = db.collection("aluno").document(userId);
         documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
 
@@ -97,36 +81,28 @@ public class Home extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException error) {
 
                 if(documentSnapshot!=null){
-                    userName.setText("Olá "+documentSnapshot.getString("nome"));
-                    userMat.setText("ID: "+documentSnapshot.getString("matricula"));
+                    userName.setText(documentSnapshot.getString("nome"));
+                    userEmail.setText(documentSnapshot.getString("email"));
                 }
 
             }
         });
-        //Começo da leitura da lista
-        ha.startListening();
+
+
     }
 
     public void openSearch(View view) {
-        Intent i = new Intent(Home.this, Search.class);
-        startActivity(i);
-    }
-    public void openUser(View view) {
-        Intent i = new Intent(Home.this, User.class);
+        Intent i = new Intent(User.this, Search.class);
         startActivity(i);
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        //Final da leitura da lista
-        ha.stopListening();
+    public void openHome(View view) {
+        Intent i = new Intent(User.this, Home.class);
+        startActivity(i);
     }
 
     private void inicialize(){
-       userName = findViewById(R.id.nomeUser);
-       userMat = findViewById(R.id.matUser);
+        userName = findViewById(R.id.nomeUsu);
+        userEmail = findViewById(R.id.emailUsu);
     }
-
-
 }

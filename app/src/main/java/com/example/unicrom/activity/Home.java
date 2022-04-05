@@ -41,7 +41,7 @@ import java.util.List;
 public class Home extends AppCompatActivity {
     private TextView userName, userMat;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
-    String userId;
+    String userId, nome;
     RecyclerView rcView;
     HomeAdapter ha;
     private StorageReference mStorageReference;
@@ -99,6 +99,7 @@ public class Home extends AppCompatActivity {
                 if(documentSnapshot!=null){
                     userName.setText("Olá "+documentSnapshot.getString("nome"));
                     userMat.setText("ID: "+documentSnapshot.getString("matricula"));
+
                 }
 
             }
@@ -113,6 +114,10 @@ public class Home extends AppCompatActivity {
     }
     public void openUser(View view) {
         Intent i = new Intent(Home.this, User.class);
+        startActivity(i);
+    }
+    public void openVideo(View view) {
+        Intent i = new Intent(Home.this, Video.class);
         startActivity(i);
     }
 

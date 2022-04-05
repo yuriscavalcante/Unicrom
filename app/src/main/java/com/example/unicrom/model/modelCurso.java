@@ -11,7 +11,10 @@ public class modelCurso {
         this.id = id;
         this.prof = prof;
         this.surl = surl;
+
     }
+
+
 
     public String getCurso() {
         return curso;
@@ -44,4 +47,6 @@ public class modelCurso {
     public void setSurl(String surl) {
         this.surl = surl;
     }
+
+
 }

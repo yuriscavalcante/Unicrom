@@ -1,26 +1,27 @@
 package com.example.unicrom.model;
 
-public class modelCurso {
-    String curso, id, prof, surl, url;
+public class modelModulo {
+    String modulo, id, prof, surl, url;
 
-    modelCurso(){
+
+    modelModulo(){
 
     }
 
-    public modelCurso(String curso, String id, String prof, String surl, String url) {
-        this.curso = curso;
+    public modelModulo(String modulo, String id, String prof, String surl, String url) {
+        this.modulo = modulo;
         this.id = id;
         this.prof = prof;
         this.surl = surl;
         this.url = url;
     }
 
-    public String getCurso() {
-        return curso;
+    public String getModulo() {
+        return modulo;
     }
 
-    public void setCurso(String curso) {
-        this.curso = curso;
+    public void setModulo(String modulo) {
+        this.modulo = modulo;
     }
 
     public String getId() {

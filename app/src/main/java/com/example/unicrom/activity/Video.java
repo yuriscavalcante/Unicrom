@@ -54,7 +54,7 @@ import java.util.List;
 public class Video extends YouTubeBaseActivity {
     DatabaseReference dataBase = FirebaseDatabase.getInstance().getReference();
     List<String> urls = new ArrayList<String>();
-    
+
     TextView testeId;
     YouTubePlayerView youTubePlayerView;
 

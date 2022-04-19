@@ -18,7 +18,9 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.unicrom.R;
 import com.example.unicrom.adapter.HomeAdapter;
+import com.example.unicrom.adapter.ModuloAdapter;
 import com.example.unicrom.model.modelCurso;
+import com.example.unicrom.model.modelModulo;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -42,9 +44,11 @@ public class Home extends AppCompatActivity {
     private TextView userName, userMat;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     String userId, nome;
-    RecyclerView rcView;
+    RecyclerView rcView, modView;
     HomeAdapter ha;
+    ModuloAdapter ma;
     private StorageReference mStorageReference;
+    TextView tvPopUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +60,16 @@ public class Home extends AppCompatActivity {
         //listar os cursos
         rcView = (RecyclerView)findViewById(R.id.listaCurso);
         rcView.setLayoutManager(new LinearLayoutManager(this));
+    /*
+        modView = (RecyclerView)findViewById(R.id.moduloLista);
+        modView.setLayoutManager(new LinearLayoutManager(this));*/
 
         FirebaseRecyclerOptions<modelCurso> options =
                 new FirebaseRecyclerOptions.Builder<modelCurso>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("alunos/"+userId+"/cursos"), modelCurso.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("cursos"), modelCurso.class)
                         .build();
+
+
 
         ha = new HomeAdapter(options);
         rcView.setAdapter(ha);
@@ -131,6 +140,7 @@ public class Home extends AppCompatActivity {
     private void inicialize(){
        userName = findViewById(R.id.nomeUser);
        userMat = findViewById(R.id.matUser);
+       tvPopUp = findViewById(R.id.tituloCurso);
     }
 
 

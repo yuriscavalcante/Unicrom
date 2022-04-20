@@ -126,7 +126,9 @@
                     android:id="@+id/imageView12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/video" />
+                    android:onClick="openVideo"
+                    app:srcCompat="@drawable/video"
+                    tools:ignore="SpeakableTextPresentCheck" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -172,8 +174,8 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="140dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -185,7 +187,6 @@
         android:background="@drawable/bordainput">
 
         <TextView
-            android:textStyle="bold"
             android:id="@+id/matUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -193,6 +194,7 @@
             android:layout_marginTop="4dp"
             android:text="TextView"
             android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

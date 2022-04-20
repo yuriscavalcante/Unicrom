@@ -15,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.example.unicrom.R;
 import com.example.unicrom.adapter.HomeAdapter;
 import com.example.unicrom.adapter.ModuloAdapter;
@@ -47,8 +46,10 @@ public class Home extends AppCompatActivity {
     RecyclerView rcView, modView;
     HomeAdapter ha;
     ModuloAdapter ma;
+    public String curso;
     private StorageReference mStorageReference;
     TextView tvPopUp;
+    //public List<String> curso = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,19 +61,22 @@ public class Home extends AppCompatActivity {
         //listar os cursos
         rcView = (RecyclerView)findViewById(R.id.listaCurso);
         rcView.setLayoutManager(new LinearLayoutManager(this));
-    /*
-        modView = (RecyclerView)findViewById(R.id.moduloLista);
-        modView.setLayoutManager(new LinearLayoutManager(this));*/
 
         FirebaseRecyclerOptions<modelCurso> options =
                 new FirebaseRecyclerOptions.Builder<modelCurso>()
                         .setQuery(FirebaseDatabase.getInstance().getReference().child("cursos"), modelCurso.class)
                         .build();
 
-
-
         ha = new HomeAdapter(options);
+
         rcView.setAdapter(ha);
+        //curso.add(ha.testeCurso);
+
+        //modView = (RecyclerView)findViewById(R.id.moduloLista);
+        //modView.setLayoutManager(new LinearLayoutManager(this));
+
+
+
 
         //Função para puxar e dar "set" na imagem
         try {
@@ -98,6 +102,7 @@ public class Home extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
         //"Setar" informções do aluno
         DocumentReference documentReference = db.collection("aluno").document(userId);
         documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
@@ -112,23 +117,36 @@ public class Home extends AppCompatActivity {
                 }
 
             }
+
         });
         //Começo da leitura da lista
         ha.startListening();
+
+        //curso = ha.curso;
+
+
+
+       // ma.startListening();
     }
 
     public void openSearch(View view) {
         Intent i = new Intent(Home.this, Search.class);
         startActivity(i);
     }
+
     public void openUser(View view) {
         Intent i = new Intent(Home.this, User.class);
         startActivity(i);
     }
+
     public void openVideo(View view) {
         Intent i = new Intent(Home.this, Video.class);
         startActivity(i);
     }
+
+
+
+
 
     @Override
     protected void onStop() {

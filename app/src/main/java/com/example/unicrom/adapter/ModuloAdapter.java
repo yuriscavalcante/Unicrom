@@ -21,24 +21,24 @@ import com.orhanobut.dialogplus.ViewHolder;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ModuloAdapter {
-    /*
-    extends FirebaseRecyclerAdapter<modelModulo,ModuloAdapter.myViewHolder>
+public class ModuloAdapter extends FirebaseRecyclerAdapter<modelModulo,ModuloAdapter.myViewHolder>{
+
+
     /**
      * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
      * {@link FirebaseRecyclerOptions} for configuration options.
      *
-     * @param options
-
-    public ModuloAdapter(@NonNull FirebaseRecyclerOptions<modelModulo> options) {
-        super(options);
+     * @param option
+     **/
+    public ModuloAdapter(@NonNull FirebaseRecyclerOptions<modelModulo> option) {
+        super(option);
     }
 
     @Override
     protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull modelModulo model) {
         holder.modulo.setText(model.getModulo());
         holder.prof.setText(model.getProf());
-        holder.moduloId.setText(model.getId());
+        holder.moduloId.setText(model.getModuloId());
 
 
         Glide.with(holder.img.getContext())
@@ -55,7 +55,7 @@ public class ModuloAdapter {
     @Override
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.modulo_item,parent, false);
-        return new ModuloAdapter.myViewHolder(view);
+        return new myViewHolder(view);
     }
 
     class myViewHolder extends RecyclerView.ViewHolder{
@@ -74,5 +74,5 @@ public class ModuloAdapter {
 
         }
     }
-*/
+
 }

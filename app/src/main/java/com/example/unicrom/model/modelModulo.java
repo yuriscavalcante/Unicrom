@@ -1,19 +1,18 @@
 package com.example.unicrom.model;
 
 public class modelModulo {
-    String modulo, id, prof, surl, url;
+    String modulo, moduloId, prof, surl/*,url*/;
 
 
     modelModulo(){
 
     }
 
-    public modelModulo(String modulo, String id, String prof, String surl, String url) {
+    public modelModulo(String modulo, String moduloId, String prof, String surl) {
         this.modulo = modulo;
-        this.id = id;
+        this.moduloId = moduloId;
         this.prof = prof;
         this.surl = surl;
-        this.url = url;
     }
 
     public String getModulo() {
@@ -24,12 +23,12 @@ public class modelModulo {
         this.modulo = modulo;
     }
 
-    public String getId() {
-        return id;
+    public String getModuloId() {
+        return moduloId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setModuloId(String moduloId) {
+        this.moduloId = moduloId;
     }
 
     public String getProf() {
@@ -48,11 +47,12 @@ public class modelModulo {
         this.surl = surl;
     }
 
+    /*
     public String getUrl() {
         return url;
     }
 
     public void setUrl(String url) {
         this.url = url;
-    }
+    }*/
 }

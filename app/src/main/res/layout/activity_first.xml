@@ -48,6 +48,13 @@
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="openHome"
             android:text="Button" />
+
+        <TextView
+            android:id="@+id/testeNovo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

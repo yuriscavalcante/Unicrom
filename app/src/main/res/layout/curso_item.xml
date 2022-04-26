@@ -44,19 +44,6 @@
             android:textSize="14sp"
             android:textStyle="italic" />
 
-        <TextView
-            android:id="@+id/cursoId"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/cursoProf"
-            android:layout_marginLeft="5dp"
-            android:layout_toRightOf="@+id/cursoAvatar"
-            android:text="id"
-            android:textColor="@color/black"
-            android:textSize="14sp"
-            android:textStyle="italic" />
-
-
 
     </RelativeLayout>
 

@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.unicrom.R;
-import com.example.unicrom.model.User;
+import com.example.unicrom.model.modelLoginUser;
 import com.example.unicrom.util.conection;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -20,7 +20,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
-import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
 
@@ -44,12 +43,12 @@ public class Login extends AppCompatActivity {
 
         if(!authEmail.isEmpty()){
             if(!authPass.isEmpty()){
-                User user = new User();
+                modelLoginUser modelLoginUser = new modelLoginUser();
 
-                user.setEmail(authEmail);
-                user.setSenha(authPass);
+                modelLoginUser.setEmail(authEmail);
+                modelLoginUser.setSenha(authPass);
 
-                login(user);                
+                login(modelLoginUser);
             }else{
                 Toast.makeText(this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
             }
@@ -59,9 +58,9 @@ public class Login extends AppCompatActivity {
         }
     }
 
-    private void login(User user) {
+    private void login(modelLoginUser modelLoginUser) {
 
-        auth.signInWithEmailAndPassword(user.getEmail(), user.getSenha()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        auth.signInWithEmailAndPassword(modelLoginUser.getEmail(), modelLoginUser.getSenha()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){

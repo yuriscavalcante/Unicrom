@@ -82,7 +82,9 @@
                     android:id="@+id/imageView12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/video" />
+                    android:onClick="openVideo"
+                    app:srcCompat="@drawable/video"
+                    tools:ignore="SpeakableTextPresentCheck" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView

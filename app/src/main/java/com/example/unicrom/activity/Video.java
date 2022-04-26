@@ -23,6 +23,7 @@ import com.example.unicrom.adapter.HomeAdapter;
 import com.example.unicrom.adapter.ModuloAdapter;
 import com.example.unicrom.model.modelCurso;
 import com.example.unicrom.model.modelModulo;
+import com.example.unicrom.model.modelUser;
 import com.example.unicrom.model.modelVideo;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -55,14 +56,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Video extends YouTubeBaseActivity {
-    DatabaseReference dataBase = FirebaseDatabase.getInstance().getReference().child("alunos").child("a1").child("curso");
+
     //List<String> urls = new ArrayList<String>();
     String cursoNome;
     TextView testeId;
     //YouTubePlayerView youTubePlayerView;
     RecyclerView rcView;
     ModuloAdapter ma;
-
+    Home home = new Home();
+    String userId;
+    DatabaseReference dataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,20 +73,8 @@ public class Video extends YouTubeBaseActivity {
         setContentView(R.layout.activity_video);
         //youTubePlayerView = findViewById(R.id.ytPlayer);
         testeId = findViewById(R.id.testeId);
-
-        dataBase.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                modelCurso modulo = snapshot.getValue(modelCurso.class);
-                testeId.setText(modulo.getCurso());
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        dataBase = FirebaseDatabase.getInstance().getReference().child("cursos").child(userId).child("cursos");
 
 
 
@@ -92,7 +83,7 @@ public class Video extends YouTubeBaseActivity {
 
         FirebaseRecyclerOptions<modelModulo> options =
                 new FirebaseRecyclerOptions.Builder<modelModulo>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("alunos").child("a1").child("curso").child("aulas"), modelModulo.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("alunos").child(userId).child("aulas"), modelModulo.class)
                         .build();
 
         ma = new ModuloAdapter(options);
@@ -109,7 +100,11 @@ public class Video extends YouTubeBaseActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
+
         ma.startListening();
+
+
 
 
 

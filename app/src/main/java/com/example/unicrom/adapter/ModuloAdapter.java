@@ -46,6 +46,7 @@ public class ModuloAdapter extends FirebaseRecyclerAdapter<modelModulo,ModuloAda
     @Override
     protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull modelModulo model) {
        holder.titulo.setText(model.getTitulo());
+
        //holder.url.setText(model.getUrl());
 
         holder.rl.setOnClickListener(new View.OnClickListener() {
@@ -113,7 +114,9 @@ public class ModuloAdapter extends FirebaseRecyclerAdapter<modelModulo,ModuloAda
             //videoAula = (YouTubePlayerView)itemView.findViewById(R.id.videoAula);
             //url = (TextView)itemView.findViewById(R.id.testeIdVideo);
             rl = (RelativeLayout)itemView.findViewById(R.id.modRL);
-            youTubePlayerView = (YouTubePlayerView)itemView.findViewById(R.id.videoAula);
+            //youTubePlayerView = (YouTubePlayerView)itemView.findViewById(R.id.videoAula);
+
+
 
         }
     }

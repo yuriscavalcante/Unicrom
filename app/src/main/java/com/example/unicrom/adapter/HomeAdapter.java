@@ -51,7 +51,10 @@ public class HomeAdapter extends FirebaseRecyclerAdapter<modelCurso, HomeAdapter
     protected void onBindViewHolder(@NonNull myViewHolder holder, int position, @NonNull modelCurso model) {
         holder.curso.setText(model.getCurso());
         holder.prof.setText(model.getProf());
-        holder.id.setText(model.getId());
+
+
+
+        //holder.id.setText(model.getId());
 
 
 
@@ -127,16 +130,18 @@ public class HomeAdapter extends FirebaseRecyclerAdapter<modelCurso, HomeAdapter
 
 
     class myViewHolder extends RecyclerView.ViewHolder{
-        TextView curso, prof, id;
+        TextView curso, prof;
         CircleImageView img;
         RelativeLayout rl;
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
             curso = (TextView)itemView.findViewById(R.id.nomeCurso);
             prof = (TextView)itemView.findViewById(R.id.cursoProf);
-            id = (TextView)itemView.findViewById(R.id.cursoId);
+            //id = (TextView)itemView.findViewById(R.id.cursoId);
             img = (CircleImageView)itemView.findViewById(R.id.cursoAvatar);
             rl = (RelativeLayout)itemView.findViewById(R.id.cursoCard);
+
+
 
 
 

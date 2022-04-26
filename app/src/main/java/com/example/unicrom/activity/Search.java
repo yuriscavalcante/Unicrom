@@ -112,6 +112,11 @@ public class Search extends AppCompatActivity {
 
     }
 
+    public void openVideo(View view) {
+        Intent i = new Intent(Search.this, Video.class);
+        startActivity(i);
+    }
+
     @Override
     protected void onStop() {
         super.onStop();

@@ -20,11 +20,17 @@ import com.example.unicrom.adapter.HomeAdapter;
 import com.example.unicrom.adapter.ModuloAdapter;
 import com.example.unicrom.model.modelCurso;
 import com.example.unicrom.model.modelModulo;
+import com.example.unicrom.model.modelUser;
+import com.example.unicrom.model.testeModel;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -49,6 +55,7 @@ public class Home extends AppCompatActivity {
     public String curso;
     private StorageReference mStorageReference;
     TextView tvPopUp;
+    DatabaseReference dataBase, userdb;
     //public List<String> curso = new ArrayList<String>();
 
     @Override
@@ -57,6 +64,8 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();//pegar id de usuario
         inicialize();//inicializar os componentes da tela
+        //dataBase = FirebaseDatabase.getInstance().getReference().child("alunos").child(userId).child("curso");
+        userdb = FirebaseDatabase.getInstance().getReference().child("alunos").child(userId);
         mStorageReference = FirebaseStorage.getInstance().getReference().child("foto/"+userId+"/avatar.png");//imagem do avatar
         //listar os cursos
         rcView = (RecyclerView)findViewById(R.id.listaCurso);
@@ -64,7 +73,7 @@ public class Home extends AppCompatActivity {
 
         FirebaseRecyclerOptions<modelCurso> options =
                 new FirebaseRecyclerOptions.Builder<modelCurso>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("cursos"), modelCurso.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("alunos").child(userId).child("cursos"), modelCurso.class)
                         .build();
 
         ha = new HomeAdapter(options);
@@ -102,7 +111,23 @@ public class Home extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        userdb.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                modelUser user = snapshot.getValue(modelUser.class);
+                userName.setText(user.getNome());
+                userMat.setText("MAT:"+user.getMat());
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         //"Setar" informções do aluno
+        /*
         DocumentReference documentReference = db.collection("aluno").document(userId);
         documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
 
@@ -117,7 +142,9 @@ public class Home extends AppCompatActivity {
 
             }
 
-        });
+        });*/
+
+
         //Começo da leitura da lista
         ha.startListening();
         //ma.startListening();

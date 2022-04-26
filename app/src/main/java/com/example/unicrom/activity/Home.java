@@ -70,10 +70,9 @@ public class Home extends AppCompatActivity {
         ha = new HomeAdapter(options);
 
         rcView.setAdapter(ha);
-        //curso.add(ha.testeCurso);
 
-        //modView = (RecyclerView)findViewById(R.id.moduloLista);
-        //modView.setLayoutManager(new LinearLayoutManager(this));
+
+
 
 
 
@@ -121,7 +120,7 @@ public class Home extends AppCompatActivity {
         });
         //Começo da leitura da lista
         ha.startListening();
-
+        //ma.startListening();
         //curso = ha.curso;
 
 
@@ -158,7 +157,7 @@ public class Home extends AppCompatActivity {
     private void inicialize(){
        userName = findViewById(R.id.nomeUser);
        userMat = findViewById(R.id.matUser);
-       tvPopUp = findViewById(R.id.tituloCurso);
+
     }
 
 

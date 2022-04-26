@@ -18,8 +18,11 @@ import com.example.unicrom.R;
 import com.example.unicrom.activity.First;
 import com.example.unicrom.activity.Home;
 import com.example.unicrom.model.modelCurso;
+import com.example.unicrom.model.modelModulo;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.orhanobut.dialogplus.DialogPlus;
+import com.orhanobut.dialogplus.ViewHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +52,9 @@ public class HomeAdapter extends FirebaseRecyclerAdapter<modelCurso, HomeAdapter
         holder.curso.setText(model.getCurso());
         holder.prof.setText(model.getProf());
         holder.id.setText(model.getId());
+
+
+
         //holder.tv.setText(model.getCurso());
 
         //holder.cursoPopUp.setText(model.getCurso());
@@ -64,28 +70,26 @@ public class HomeAdapter extends FirebaseRecyclerAdapter<modelCurso, HomeAdapter
 
 
 
+
+        /*
         holder.rl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 //TextView tv = view.findViewById(R.id.testeNovo);
+                /*
                 home.curso = model.getCurso();
 
                 if (home.curso != null && home.curso != "") {
                     view.getContext().startActivity(new Intent(view.getContext(), First.class));
                 }
 
-
-
-
                 //home.curso = model.getCurso().toString();
 
                 //first.tv.setText(model.getCurso());
 
-
-
                 //home.openCurso(view);
-            /*
+
             //Abre o popUp
 
                 final DialogPlus dialogPlus = DialogPlus.newDialog(holder.img.getContext())
@@ -101,33 +105,31 @@ public class HomeAdapter extends FirebaseRecyclerAdapter<modelCurso, HomeAdapter
                 tvPopUp.setText(model.getCurso());
 
 
-                dialogPlus.show();*/
+                dialogPlus.show();
 
 
             }
-        });
+        });*/
+
+
     }
+
+
 
 
     @NonNull
     @Override
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.curso_item,parent, false);
-        RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        view.setLayoutParams(lp);
-        myViewHolder rcv = new myViewHolder((view));
-        return rcv;
+        return new myViewHolder(view);
+
     }
+
 
     class myViewHolder extends RecyclerView.ViewHolder{
         TextView curso, prof, id;
         CircleImageView img;
         RelativeLayout rl;
-
-
-
-
-
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
             curso = (TextView)itemView.findViewById(R.id.nomeCurso);
@@ -135,11 +137,16 @@ public class HomeAdapter extends FirebaseRecyclerAdapter<modelCurso, HomeAdapter
             id = (TextView)itemView.findViewById(R.id.cursoId);
             img = (CircleImageView)itemView.findViewById(R.id.cursoAvatar);
             rl = (RelativeLayout)itemView.findViewById(R.id.cursoCard);
-            //
+
 
 
             //cursoPopUp = (TextView)itemView.findViewById(R.id.tituloCurso);
         }
+
     }
+
+
+
+
 
 }

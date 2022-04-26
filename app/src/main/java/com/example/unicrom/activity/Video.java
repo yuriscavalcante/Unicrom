@@ -3,6 +3,7 @@ package com.example.unicrom.activity;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,7 +20,9 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.unicrom.R;
 import com.example.unicrom.adapter.HomeAdapter;
+import com.example.unicrom.adapter.ModuloAdapter;
 import com.example.unicrom.model.modelCurso;
+import com.example.unicrom.model.modelModulo;
 import com.example.unicrom.model.modelVideo;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -52,27 +55,48 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Video extends YouTubeBaseActivity {
-    DatabaseReference dataBase = FirebaseDatabase.getInstance().getReference();
-    List<String> urls = new ArrayList<String>();
-
+    DatabaseReference dataBase = FirebaseDatabase.getInstance().getReference().child("alunos").child("a1").child("curso");
+    //List<String> urls = new ArrayList<String>();
+    String cursoNome;
     TextView testeId;
-    YouTubePlayerView youTubePlayerView;
+    //YouTubePlayerView youTubePlayerView;
+    RecyclerView rcView;
+    ModuloAdapter ma;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
-
-        youTubePlayerView = findViewById(R.id.ytPlayer);
+        //youTubePlayerView = findViewById(R.id.ytPlayer);
         testeId = findViewById(R.id.testeId);
 
-        DatabaseReference reference = dataBase.child("url");
+        dataBase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                modelCurso modulo = snapshot.getValue(modelCurso.class);
+                testeId.setText(modulo.getCurso());
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
 
+        rcView = (RecyclerView)findViewById(R.id.videoRv);
+        rcView.setLayoutManager(new LinearLayoutManager(this));
 
+        FirebaseRecyclerOptions<modelModulo> options =
+                new FirebaseRecyclerOptions.Builder<modelModulo>()
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("alunos").child("a1").child("curso").child("aulas"), modelModulo.class)
+                        .build();
 
-
+        ma = new ModuloAdapter(options);
+        rcView.setAdapter(ma);
 
 
     }
@@ -85,46 +109,7 @@ public class Video extends YouTubeBaseActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
-        DatabaseReference reference = dataBase.child("cursos");
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                for(DataSnapshot data: dataSnapshot.getChildren()){
-                    String curso = data.child("url").getValue(String.class);
-
-                    urls.add(curso);
-                }
-
-                //url = urls.get(0);
-                testeId.setText(urls.get(0));
-                //Reprodutor de video
-                YouTubePlayer.OnInitializedListener listener = new YouTubePlayer.OnInitializedListener() {
-                    @Override
-                    public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                        //carrega o video pelo id no youtube
-                        youTubePlayer.loadVideo(""+urls.get(0));
-                        //Começa o video
-                        youTubePlayer.play();
-                    }
-
-                    @Override
-                    public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-                        Toast.makeText(getApplicationContext(),"Deu merda!", Toast.LENGTH_SHORT).show();
-                    }
-                    //inicializa o player
-
-                };
-                //inicializa o player
-                youTubePlayerView.initialize("AIzaSyBJ3lPqgYwDAqPmYzs6YHdt5oC2dToO2UY", listener);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        ma.startListening();
 
 
 

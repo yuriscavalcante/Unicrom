@@ -100,6 +100,11 @@ public class Login extends AppCompatActivity {
         }*/
     }
 
+    public void openUpdate(View view){
+        Intent i = new Intent(Login.this, UpdateSenha.class);
+        startActivity(i);
+    }
+
     private void inicializeComponent(){
         email = findViewById(R.id.editTextEmailLogin);
         password = findViewById(R.id.editTextPasswordLogin);

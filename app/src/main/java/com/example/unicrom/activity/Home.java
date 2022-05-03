@@ -1,7 +1,6 @@
 package com.example.unicrom.activity;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,9 +18,8 @@ import com.example.unicrom.R;
 import com.example.unicrom.adapter.HomeAdapter;
 import com.example.unicrom.adapter.ModuloAdapter;
 import com.example.unicrom.model.modelCurso;
-import com.example.unicrom.model.modelModulo;
+import com.example.unicrom.model.modelLoginUser;
 import com.example.unicrom.model.modelUser;
-import com.example.unicrom.model.testeModel;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -31,19 +29,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Home extends AppCompatActivity {
     private TextView userName, userMat;
@@ -92,7 +84,7 @@ public class Home extends AppCompatActivity {
             mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(Home.this, "Tudo Ok!", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(Home.this, "Tudo Ok!", Toast.LENGTH_SHORT).show();
                     Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
                     ((ImageView)findViewById(R.id.avatarcircle)).setImageBitmap(bitmap);
                 }
@@ -111,10 +103,12 @@ public class Home extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+
         userdb.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 modelUser user = snapshot.getValue(modelUser.class);
+                modelLoginUser modelLoginUser = snapshot.getValue(modelLoginUser.class);
                 userName.setText(user.getNome());
                 userMat.setText("MAT:"+user.getMat());
 
@@ -183,7 +177,8 @@ public class Home extends AppCompatActivity {
 
     private void inicialize(){
        userName = findViewById(R.id.nomeUser);
-       userMat = findViewById(R.id.matUser);
+
+       userMat = findViewById(R.id.matTesteUser);
 
     }
 

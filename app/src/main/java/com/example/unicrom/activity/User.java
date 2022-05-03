@@ -64,7 +64,7 @@ public class User extends AppCompatActivity {
             mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(User.this, "Tudo Ok!", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(User.this, "Tudo Ok!", Toast.LENGTH_SHORT).show();
                     Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
                     ((ImageView)findViewById(R.id.avatarcircle)).setImageBitmap(bitmap);
                 }
@@ -112,6 +112,17 @@ public class User extends AppCompatActivity {
 
     public void openVideo(View view) {
         Intent i = new Intent(User.this, Video.class);
+        startActivity(i);
+    }
+
+    public void openDadosPessoais(View view){
+        Intent i = new Intent(User.this, DadosPessoais.class);
+        startActivity(i);
+    }
+
+    public void logout(View view){
+        FirebaseAuth.getInstance().signOut();
+        Intent i = new Intent(User.this, Login.class);
         startActivity(i);
     }
 

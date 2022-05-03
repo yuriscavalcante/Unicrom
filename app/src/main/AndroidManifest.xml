@@ -17,6 +17,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
+            android:name=".activity.DadosPessoais"
+            android:exported="false" />
+        <activity
+            android:name=".activity.UpdateSenha"
+            android:exported="false" />
+        <activity
             android:name=".activity.Video"
             android:exported="false" />
         <activity

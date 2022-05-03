@@ -2,10 +2,10 @@ package com.example.unicrom.model;
 
 import java.io.Serializable;
 
-public class User implements  Serializable {
+public class modelLoginUser implements  Serializable {
     private String nome,email,senha;
 
-    public User() {
+    public modelLoginUser() {
     }
 
     public String getNome() {

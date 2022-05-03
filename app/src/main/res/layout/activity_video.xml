@@ -9,20 +9,19 @@
 
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/backlogin2"
         android:layout_width="56dp"
         android:layout_height="55dp"
         android:layout_alignParentTop="true"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:background="#6360FF"
+
         android:onClick="openHome"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.011"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/returnpurple"
-        tools:ignore="SpeakableTextPresentCheck"
-        tools:visibility="visible" />
+        app:srcCompat="@drawable/backarrow"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/testeId"

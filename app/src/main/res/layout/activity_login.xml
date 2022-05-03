@@ -100,7 +100,7 @@
             android:id="@+id/loginButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
+            android:layout_marginTop="35dp"
             android:background="@drawable/bordabotao"
             android:onClick="authentication"
             android:text="Login"
@@ -114,15 +114,32 @@
             android:id="@+id/sub"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="15dp"
             android:text="VENHA FAZER PARTE DA REVOLUÇÃO PROFISSIONAL!"
             android:textAlignment="center"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/updateSenha"
+            app:layout_constraintVertical_bias="0.0"
+            />
+
+        <TextView
+            android:id="@+id/updateSenha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:onClick="openUpdate"
+            android:text="ESQUECI MINHA SENHA!"
+            android:textAlignment="center"
+            android:textColor="#6360FF"
             app:layout_constraintTop_toBottomOf="@+id/loginButton"
-            app:layout_constraintVertical_bias="0.0" />
+            tools:ignore="TouchTargetSizeCheck"
+            tools:layout_editor_absoluteX="8dp" />
+
+
+
 
         <TextView
             android:id="@+id/textView4"

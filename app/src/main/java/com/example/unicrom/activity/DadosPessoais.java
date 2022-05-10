@@ -80,60 +80,69 @@ public class DadosPessoais extends AppCompatActivity {
     {
         Dialog dialog = new Dialog(this);
         dialog.setContentView(R.layout.updatepopup);
-        TextView emailUp = dialog.findViewById(R.id.emailUpdate);
-        emailUp.setText(email.getText().toString());
+        //TextView emailUp = dialog.findViewById(R.id.emailUpdate);
+        //emailUp.setText(email.getText().toString());
         Button reAuth = dialog.findViewById(R.id.reAuth);
-        EditText password = dialog.findViewById(R.id.passwordUp);
+        Button cancel = dialog.findViewById(R.id.cancelUp);
+        //EditText password = dialog.findViewById(R.id.passwordUp);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         reAuth.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 AuthCredential credential = EmailAuthProvider
-                        .getCredential(nomeLoc,password.getText().toString());
+                        .getCredential(nomeLoc," ");
 
-                    user.reauthenticate(credential)
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    user.updateEmail(email.getText().toString())
-                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
-                                                    if(task.isSuccessful()){
-                                                        Map<String, Object> map = new HashMap<>();
-                                                        map.put("nome", nome.getText().toString());
-                                                        map.put("dataNasc",dataNasc.getText().toString());
-                                                        map.put("sexo", sexo.getText().toString());
-                                                        map.put("email", email.getText().toString());
-                                                        userdb.updateChildren(map).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                            @Override
-                                                            public void onSuccess(Void unused) {
-                                                                dialog.dismiss();
-                                                                Toast.makeText(DadosPessoais.this,"Mudanças aplicadas com sucesso!", Toast.LENGTH_SHORT).show();
-                                                            }
-                                                        }).addOnFailureListener(new OnFailureListener() {
-                                                            @Override
-                                                            public void onFailure(@NonNull Exception e) {
-                                                                Toast.makeText(DadosPessoais.this,"Erro!", Toast.LENGTH_SHORT).show();
-                                                            }
-                                                        });
-                                                        Toast.makeText(DadosPessoais.this,"Mudanças aplicadas com sucesso!", Toast.LENGTH_SHORT).show();
-                                                    }
+                user.reauthenticate(credential)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                user.updateEmail(email.getText().toString())
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if(task.isSuccessful()){
+                                                    Map<String, Object> map = new HashMap<>();
+                                                    map.put("nome", nome.getText().toString());
+                                                    map.put("dataNasc",dataNasc.getText().toString());
+                                                    map.put("sexo", sexo.getText().toString());
+                                                    map.put("email", email.getText().toString());
+                                                    userdb.updateChildren(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void unused) {
+                                                            dialog.dismiss();
+                                                            Toast.makeText(DadosPessoais.this,"Mudanças aplicadas com sucesso!", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    }).addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            Toast.makeText(DadosPessoais.this,"Erro!", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
+                                                    Toast.makeText(DadosPessoais.this,"Mudanças aplicadas com sucesso!", Toast.LENGTH_SHORT).show();
                                                 }
-                                            }).addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            Toast.makeText(DadosPessoais.this,"Erro!", Toast.LENGTH_SHORT).show();
-                                        }
-                                    });
-                                }
-                            });
-                }
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(DadosPessoais.this,"Erro!", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                        });
+
+            }
 
 
         });
-
         dialog.show();
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+    }
 
         /*
         Map<String, Object> map = new HashMap<>();
@@ -151,7 +160,9 @@ public class DadosPessoais extends AppCompatActivity {
                 Toast.makeText(DadosPessoais.this,"Erro!", Toast.LENGTH_SHORT).show();
             }
         });*/
-    }
+
+
+
 
     public void setEdit(View view){
         nome.setEnabled(true);

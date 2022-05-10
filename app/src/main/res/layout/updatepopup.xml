@@ -7,8 +7,8 @@
     android:background="#6360FF">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="409dp"
-        android:layout_height="415dp"
+        android:layout_width="414dp"
+        android:layout_height="192dp"
         android:background="@drawable/bordas"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,54 +17,42 @@
         app:layout_constraintVertical_bias="0.009">
 
         <TextView
-            android:id="@+id/emailUpdate"
+            android:id="@+id/textView18"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:text="TextView"
+            android:layout_marginTop="28dp"
+            android:text="CONFIME AS ALTERAÇÕES FEITAS"
             android:textColor="@color/black"
-            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/passwordUp"
-            android:layout_width="332dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="80dp"
-            android:background="@drawable/bordainput"
-            android:ems="10"
-            android:gravity="center"
-            android:inputType="textPassword"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailUpdate"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <Button
             android:id="@+id/reAuth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="88dp"
-            android:background="@drawable/bordabotao"
-            android:text="LOGIN"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="56dp"
+            android:onClick="updateData"
+            android:text="Confirmar"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/passwordUp" />
+            app:layout_constraintTop_toBottomOf="@+id/textView18"
+            android:background="@drawable/bordabotao"
+            android:textColor="@color/white"/>
 
-        <TextView
-            android:id="@+id/textView18"
+        <Button
+            android:id="@+id/cancelUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:text="DIGITE SUA SENHA"
-            android:textColor="@color/black"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="64dp"
+            android:text="Cancelar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/reAuth"
+            app:layout_constraintTop_toBottomOf="@+id/textView18"
+            android:background="@drawable/cancelborda"
+            android:textColor="@color/white"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

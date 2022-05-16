@@ -55,6 +55,8 @@ dependencies {
     implementation 'com.orhanobut:dialogplus:1.11@aar'
     //implementação api youtube
     implementation files ('libs/YouTubeAndroidPlayerApi.jar')
+    //Expandable Layout
+
 
 
     testImplementation 'junit:junit:4.13.2'

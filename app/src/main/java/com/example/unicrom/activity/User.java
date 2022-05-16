@@ -115,6 +115,11 @@ public class User extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void openBol(View view) {
+        Intent i = new Intent(User.this, Boleto.class);
+        startActivity(i);
+    }
+
     public void openDadosPessoais(View view){
         Intent i = new Intent(User.this, DadosPessoais.class);
         startActivity(i);

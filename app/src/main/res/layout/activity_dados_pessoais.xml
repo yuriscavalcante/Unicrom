@@ -82,8 +82,8 @@
 
         <EditText
             android:id="@+id/nomeEdit"
-            android:layout_width="366dp"
-            android:layout_height="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="16dp"
@@ -98,73 +98,85 @@
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <EditText
-            android:id="@+id/sexoEdit"
-            android:layout_width="366dp"
-            android:layout_height="40dp"
+            android:id="@+id/emailEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="5dp
+"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bordainput"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/emailText"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <EditText
+            android:id="@+id/sexoEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/bordainput"
             android:ems="10"
             android:inputType="textPersonName"
             android:textAlignment="center"
             android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView15"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <EditText
             android:id="@+id/nascEdit"
-            android:layout_width="366dp"
-            android:layout_height="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_marginTop="5dp"
             android:background="@drawable/bordainput"
             android:ems="10"
             android:inputType="textPersonName"
             android:textAlignment="center"
             android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView16"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-        <EditText
-            android:id="@+id/emailEdit"
-            android:layout_width="366dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="5dp"
-            android:background="@drawable/bordainput"
-            android:ems="10"
-            android:inputType="textEmailAddress"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emailText"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
         <Button
             android:id="@+id/editButton"
-            android:layout_width="406dp"
-            android:layout_height="43dp"
-            android:layout_marginTop="104dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@drawable/editb"
+            android:layout_marginTop="96dp"
             android:onClick="setEdit"
             android:text="EDITAR INFORMAÇÕES"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nascEdit"
             tools:ignore="TouchTargetSizeCheck,DuplicateClickableBoundsCheck" />
 
         <Button
             android:id="@+id/saveEdit"
-            android:layout_width="406dp"
-            android:layout_height="43dp"
-            android:layout_marginTop="104dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="96dp"
             android:background="@drawable/bordabotao"
             android:onClick="updateData"
             android:text="SALVAR ALTERAÇÕES"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nascEdit"
             tools:ignore="TouchTargetSizeCheck" />

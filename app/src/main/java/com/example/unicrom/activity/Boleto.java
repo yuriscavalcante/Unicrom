@@ -29,10 +29,11 @@ import com.google.firebase.storage.StorageReference;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Locale;
 
 
 public class Boleto extends AppCompatActivity {
-    String userId;
+    String userId, thisMes;
     private StorageReference mStorageReference;
     TextView nd;
     ImageView iv;
@@ -62,7 +63,8 @@ public class Boleto extends AppCompatActivity {
             @Override
             public void onSuccess(Uri uri) {
                 String url = uri.toString();
-                downloadFiles(Boleto.this,""+mes.getText().toString(),"PNG",DIRECTORY_DOWNLOADS,url);
+
+                downloadFiles(Boleto.this,mes.getText().toString(),"PNG",DIRECTORY_DOWNLOADS,url);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -85,10 +87,10 @@ public class Boleto extends AppCompatActivity {
 
 
     public void searchBol(View view){
-        mStorageReference = FirebaseStorage.getInstance().getReference().child("foto/"+userId+"/boleto/"+ano.getText().toString()+"/"+mes.getText().toString()+".PNG");
+        mStorageReference = FirebaseStorage.getInstance().getReference().child("foto/"+userId+"/boleto/"+ano.getText().toString()+"/"+mes.getText().toString().toLowerCase()+".PNG");
 
         try {
-            final File localFile = File.createTempFile(""+mes.getText().toString(), "png");
+            final File localFile = File.createTempFile(mes.getText().toString().toLowerCase(), "png");
             mStorageReference.getFile(localFile).addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
@@ -97,13 +99,14 @@ public class Boleto extends AppCompatActivity {
                     iv.setVisibility(View.VISIBLE);
                     down.setVisibility(View.VISIBLE);
                     iv.setImageBitmap(bitmap);
+                    nd.setVisibility(View.GONE);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     iv.setVisibility(View.GONE);
                     nd.setVisibility(View.VISIBLE);
-                    //Toast.makeText(Boleto.this, "Erro!", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(Boleto.this, thisMes, Toast.LENGTH_SHORT).show();
                 }
             });
         } catch (IOException e) {

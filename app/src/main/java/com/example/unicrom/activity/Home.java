@@ -110,7 +110,7 @@ public class Home extends AppCompatActivity {
                 modelUser user = snapshot.getValue(modelUser.class);
                 modelLoginUser modelLoginUser = snapshot.getValue(modelLoginUser.class);
                 userName.setText(user.getNome());
-                userMat.setText("MAT:"+user.getMat());
+                userMat.setText("MATRICULA: "+user.getMat());
 
             }
 

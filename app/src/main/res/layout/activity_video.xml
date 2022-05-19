@@ -8,21 +8,6 @@
     tools:context=".activity.Video">
 
 
-    <ImageButton
-        android:id="@+id/backlogin2"
-        android:layout_width="56dp"
-        android:layout_height="55dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="#6360FF"
-
-        android:onClick="openHome"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/backarrow"
-        tools:ignore="SpeakableTextPresentCheck" />
-
     <TextView
         android:id="@+id/testeId"
         android:layout_width="wrap_content"
@@ -61,5 +46,19 @@
 
             app:layout_constraintVertical_bias="0.753" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="46dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="28dp"
+        android:background="#6360FF"
+        android:onClick="openHome"
+        android:src="@drawable/backarrow"
+        app:layout_constraintEnd_toStartOf="@+id/testeId"
+        app:layout_constraintHorizontal_bias="0.125"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

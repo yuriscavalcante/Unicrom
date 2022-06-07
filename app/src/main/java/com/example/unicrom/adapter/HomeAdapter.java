@@ -2,10 +2,12 @@ package com.example.unicrom.adapter;
 
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,8 +33,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeAdapter extends FirebaseRecyclerAdapter<modelCurso, HomeAdapter.myViewHolder> {
 
-    Home home = new Home();
-    First first = new First();
+
 
     /**
      * Initialize a {@link RecyclerView.Adapter} that listens to a Firebase query. See
@@ -74,18 +75,42 @@ public class HomeAdapter extends FirebaseRecyclerAdapter<modelCurso, HomeAdapter
 
 
 
-        /*
+
         holder.rl.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+            final DialogPlus dialogPlus = DialogPlus.newDialog(holder.img.getContext())
+                        .setContentHolder(new ViewHolder(R.layout.cursopopup))
+                        .setExpanded(true,1800)
+                        .create();
+
+
+
+                //Context cursoContext = holder.curso.getContext();
+                View view = dialogPlus.getHolderView();
+                TextView tituloCurso = view.findViewById(R.id.tituloCurso);
+                TextView cursoSobre = view.findViewById(R.id.cursoSobre);
+                TextView profCurso = view.findViewById(R.id.profcurso);
+                TextView valorCurso = view.findViewById(R.id.cursoValor);
+                TextView contato = view.findViewById(R.id.contato);
+                TextView tempo = view.findViewById(R.id.tempoCurso);
+                //ImageView imgG = view.findViewById(R.id.avatarCurso);
+                tituloCurso.setText(model.getCurso());
+                cursoSobre.setText("SOBRE:\n"+model.getSobre());
+                profCurso.setText("PROFESSOR: " + model.getProf());
+                valorCurso.setText("VALOR: R$"+model.getValor());
+                contato.setText("PARA SE MATRICULAR, ENTRE EM CONTATO COM A COORDENAÇÃO. \n" +"TEL: (91)99999-9999");
+                tempo.setText("DURAÇÃO: "+model.getTempo()+" Horas");
+
+
+
+                dialogPlus.show();
 
                 //TextView tv = view.findViewById(R.id.testeNovo);
-                /*
-                home.curso = model.getCurso();
 
-                if (home.curso != null && home.curso != "") {
-                    view.getContext().startActivity(new Intent(view.getContext(), First.class));
-                }
+                //home.curso = model.getCurso();
+
+
 
                 //home.curso = model.getCurso().toString();
 
@@ -95,24 +120,19 @@ public class HomeAdapter extends FirebaseRecyclerAdapter<modelCurso, HomeAdapter
 
             //Abre o popUp
 
-                final DialogPlus dialogPlus = DialogPlus.newDialog(holder.img.getContext())
-                        .setContentHolder(new ViewHolder(R.layout.cursopopup))
-                        .setExpanded(true,2200)
-                        .create();
+
+                //View viewer = dialogPlus.getHolderView();
+
+                //TextView tvPopUp = viewer.findViewById(R.id.tituloCurso);
+
+                //tvPopUp.setText(model.getCurso());
+
 
                 //dialogPlus.show();
-                View viewer = dialogPlus.getHolderView();
-
-                TextView tvPopUp = viewer.findViewById(R.id.tituloCurso);
-
-                tvPopUp.setText(model.getCurso());
-
-
-                dialogPlus.show();
 
 
             }
-        });*/
+        });
 
 
     }

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:onClick="closeSelectMes"
+
+    android:orientation="vertical">
+
+    <RadioGroup
+        android:id="@+id/rg_mes"
+        android:layout_width="413dp"
+        android:layout_height="735dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/jan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:onClick="checkButton"
+            android:text="JANEIRO" />
+
+        <RadioButton
+            android:id="@+id/fev"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:onClick="checkButton"
+            android:text="FEVEREIRO" />
+
+        <RadioButton
+            android:id="@+id/mar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:onClick="checkButton"
+            android:text="MARÇO" />
+
+        <RadioButton
+            android:id="@+id/abr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:onClick="checkButton"
+            android:text="ABRIL" />
+
+        <RadioButton
+            android:id="@+id/mai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:onClick="checkButton"
+            android:text="MAIO" />
+
+        <RadioButton
+            android:id="@+id/jun"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:onClick="checkButton"
+            android:text="JUNHO" />
+
+        <RadioButton
+            android:id="@+id/jul"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:onClick="checkButton"
+            android:text="JULHO" />
+
+        <RadioButton
+            android:id="@+id/ago"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:onClick="checkButton"
+            android:text="AGOSTO" />
+
+        <RadioButton
+            android:id="@+id/set"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:onClick="checkButton"
+            android:text="SETEMBRO" />
+
+        <RadioButton
+            android:id="@+id/out"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:onClick="checkButton"
+            android:text="OUTUBRO" />
+
+        <RadioButton
+            android:id="@+id/nov"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:onClick="checkButton"
+            android:text="NOVEMBRO" />
+
+        <RadioButton
+            android:id="@+id/dez"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:onClick="checkButton"
+            android:text="DEZEMBRO" />
+
+        <Button
+            android:id="@+id/confirmBol"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bordabotao"
+            android:onClick="closeSelectMes"
+            android:text="CONFIRMAR"
+            android:textColor="@color/white" />
+
+    </RadioGroup>
+
+
+</RelativeLayout>

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.Boleto"
-    android:background="#6360FF">
+    android:background="#6360FF"
+    >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="415dp"
@@ -19,27 +21,15 @@
             android:id="@+id/textView17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="72dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginStart="88dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="135dp"
             android:text="MÊS"
             android:textColor="@color/black"
             android:textSize="20dp"
+            app:layout_constraintEnd_toStartOf="@+id/textView19"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/mesSea"
-            android:textAlignment="center"
-            android:layout_width="165dp"
-            android:layout_height="36dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="28dp"
-            android:background="@drawable/bordainput"
-            android:ems="10"
-            android:inputType="textCapCharacters"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView17"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <Button
             android:id="@+id/bolSea"
@@ -55,27 +45,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/anoSea"
-            android:layout_width="165dp"
-            android:textAlignment="center"
-            android:layout_height="36dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/bordainput"
-            android:ems="10"
-            android:inputType="number"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView19"
-            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
-             />
-
         <TextView
             android:id="@+id/textView19"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="48dp"
-            android:layout_marginEnd="72dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="88dp"
             android:text="ANO"
             android:textColor="@color/black"
             android:textSize="20dp"
@@ -120,6 +95,49 @@
             app:layout_constraintTop_toBottomOf="@+id/bolSea"
             android:textSize="20dp"
             android:textColor="@color/black"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/bolSea"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView17"
+            app:layout_constraintVertical_bias="0.339">
+
+            <TextView
+                android:id="@+id/mesSea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="openSelectMesBol"
+                android:padding="15dp"
+                android:text="Selecione o mês"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textAlignment="center"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/bolSea"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView19">
+
+            <TextView
+                android:id="@+id/anoSea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="openSelectAnoBol"
+                android:padding="15dp"
+                android:text="Selecione o ano"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textAlignment="center"/>
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

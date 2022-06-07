@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
+
+
 
     <TextView
         android:id="@+id/tituloCurso"
@@ -15,9 +19,57 @@
         android:textColorHint="#FFFFFF"
         android:textSize="24sp" />
 
-    <com.google.android.youtube.player.YouTubePlayerView
-        android:id="@+id/videoAula"
+    <TextView
+        android:id="@+id/profcurso"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:padding="15dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/cursoSobre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:text="TextView"
+
+        android:textColor="@color/black"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/cursoValor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+
+        android:padding="15dp"/>
+
+    <TextView
+        android:id="@+id/tempoCurso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+
+        android:padding="15dp"
+        />
+    <TextView
+        android:id="@+id/contato"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="A"
+        android:textColor="@color/black"
+        android:textSize="14dp"
+        android:padding="15dp"
+        android:textAlignment="center"
+        android:textStyle="italic"/>
+
 
 </LinearLayout>
